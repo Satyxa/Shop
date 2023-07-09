@@ -127,6 +127,54 @@
     line-height: 16px;
     background-color: rgba(248, 248, 248, 1);
 }
+.test {
+    position: relative;
+}
+.test:hover .catalog__button__wrapper{
+    visibility: visible;
+}
+.test:hover .catalog__button{
+    visibility: visible;
+}
+.catalog__button__wrapper {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 420px;
+    background-color: rgba(58, 56, 56, 0.86);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.catalog__button {
+    visibility: hidden;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 1);
+    color: white;
+    width: 138px;
+    height: 43px;
+    background-color: transparent;
+    font-family: Lato, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: center;
+    padding: 0;
+}
+
+.catalog__button:hover{
+    background-color: white;
+    color: #EF5B70;
+    border: 1px solid #EF5B70;
+}
 
 .catalog__item__textbox {
     padding: 24px 0 0 18px;

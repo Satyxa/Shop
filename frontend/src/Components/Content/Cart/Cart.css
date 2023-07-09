@@ -5,6 +5,7 @@
     height: 148px;
     background-color: rgba(248, 243, 244, 1);
     margin-bottom: 96px;
+
 }
 
 .page__title {
@@ -20,6 +21,7 @@
 
 .cart__box {
     display: flex;
+    margin-top: 96px;
 }
 .cart__goods {
     display: flex;
@@ -195,4 +197,21 @@
     cursor: pointer;
     outline: none;
 }
-
+.cart__item-quantity {
+    display: flex;
+    align-items: center;
+    width: 165px;
+    justify-content: space-between;
+}
+.quantity__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 1);
+    text-align: center;
+    cursor: pointer;
+}

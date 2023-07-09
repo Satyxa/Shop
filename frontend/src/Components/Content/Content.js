@@ -4,6 +4,8 @@ import {Route, Routes} from "react-router-dom";
 import Registration from "./Registration/Registration";
 import Catalog from "./Catalog/Catalog";
 import Cart from "./Cart/Cart";
+import Product from "./Product/Product";
+import Login from "./Registration/Login";
 
 
 const Content = () => {
@@ -16,10 +18,16 @@ const Content = () => {
                     {<MainPage/>} />
                 <Route path="/Registration" element=
                     {<Registration/>} />
-                <Route path="/Catalog" element=
+                <Route path="/Login" element=
+                    {<Login/>} />
+                <Route path="/Catalog/:sex/:category" element=
                     {<Catalog/>} />
-                <Route path="/Cart" element=
+                <Route path="/Catalog/" element=
+                    {<Catalog/>} />
+                <Route path="/Cart/:id" element=
                     {<Cart/>} />
+                <Route path="/Product/:id" element=
+                    {<Product/>} />
             </Routes>
         </div>
     );
