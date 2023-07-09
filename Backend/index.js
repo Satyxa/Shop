@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from "mongoose";
-import {goodsCreateValidation, loginValidation, registerValidation} from "./validation.js";
+import {registerValidation} from "./validation.js";
 import UsersMethods from './contols/UserController.js'
 import GoodsMethods from './contols/GoodsController.js'
 import fileUpload from 'express-fileupload'
@@ -20,11 +20,11 @@ app.use(cors())
 app.use(fileUpload({}))
 mongoose
     .connect(DB)
-    .then(r => console.log('DB OK'))
+    .then(r => console.log('DB Ok'))
     .catch(err => console.log(err))
 
 app.post('/auth/register', registerValidation, UsersMethods.register)
-app.post('/auth/login', loginValidation, UsersMethods.login)
+app.post('/auth/login', UsersMethods.login)
 app.get('/auth/me', checkAuth, UsersMethods.getMe)
 
 app.post('/goods', GoodsMethods.create)

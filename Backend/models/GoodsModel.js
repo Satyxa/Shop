@@ -5,10 +5,14 @@ const GoodsSchema = new mongoose.Schema({
     description: {type: String, require: true},
     price: {type: Number, require: true},
     photo: String,
-    tags: {type: Array, default: []},
     views: {type: Number, default: 0},
-    size: {type: Array, default: [], require: true},
-    color: {type: Array, default: [] , require: true}
+    size: {type: Array, require: true},
+    color: {type: Array , require: true},
+    morePhotos: {type: Array},
+    category: {type: String, require: true},
+    sex: {type: String, require: true},
+    age: {type: String, require: true},
+    orders: {type: Number, default: 0}
 }, {timestamps: true})
 
 export default mongoose.model('Goods', GoodsSchema)

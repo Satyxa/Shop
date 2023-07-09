@@ -4,26 +4,46 @@ import CatalogFilter from "./CatalogFilter";
 import {Data} from '../../../DAL/axios'
 import {useDispatch, useSelector} from "react-redux";
 import {setGoods} from "../../../REDUX/GoodsReducer";
+import {setCartItems} from "../../../REDUX/CartReducer";
+import MenuPlace from "../../Menu/MenuPlace";
+import {NavLink, useParams} from "react-router-dom";
 
 
 const Catalog = () => {
+    const [currentPage, setCurrentPage] = useState(1)
     const photoUrl = 'http://localhost:1002/'
     const goodsList = useSelector(state => state.goods.goodsList)
     const dispatch = useDispatch()
-    console.log(goodsList)
-
+    const uriSex = useParams().sex
+    const uriCategory = useParams().category
+    const goodListAcc = goodsList.filter(i => i.sex === uriSex)
+    const filterGoodList = goodListAcc.filter(i => i.category === uriCategory)
+    console.log(filterGoodList)
 
     useEffect(() => {
-        const res = Data.getGoods()
-            console.log(res.data)
+        const getItems = async () => {
+            const res = await Data.getGoods(currentPage)
+            dispatch( setGoods(res.data))
             console.log(res)
-            dispatch(setGoods(res))
-            console.log(goodsList)
-    }, [goodsList])
-    console.log(goodsList)
+        };
+        getItems();
+    }, []);
+    // useEffect(() => {
+    //     const please = async () => {
+    //        const res = await Data.getGoods(currentPage)
+    //         dispatch( setGoods(res.data))
+    //     }
+    //     please()
+    // }, [])
+    const addToCart = (item) => {
+        const {photo, _id, title, description, size, color, views, tags,  price, category} = item
+        const payload = {photo, _id, title, description, size, color, views, tags, price, category}
+        dispatch(setCartItems(payload))
+    }
 
     return (
         <div>
+            <MenuPlace/>
             <div className="page__title-box">
                 <div className="container">
                     <div className="test">
@@ -39,23 +59,44 @@ const Catalog = () => {
             <div className="container">
                 <CatalogFilter/>
                 <div className="catalog">
-                    {/*{goodsList.map((i) => {*/}
-                    {/*    return <div>*/}
-                    {/*        <div className="catalog__item">*/}
-                    {/*            <img className='catalog__item-photo' src={photoUrl + i.photo} alt=""/>*/}
-                    {/*            <div className="catalog__item__textbox">*/}
-                    {/*                <h2 className='catalog__item-title'>{i.title}</h2>*/}
-                    {/*                <p className='catalog__item-description'>{i.description}</p>*/}
-                    {/*                <p className='catalog__item-price'>${i.price}</p>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*})}*/}
+                    {uriCategory === undefined && uriSex === undefined ?
+                        goodsList.map((i) => {
+                            return <div className="catalog__item">
+                                <div className="test">
+                                    <img className='catalog__item-photo' src={photoUrl + i.photo} alt="" width='360' height='420'/>
+                                    <NavLink to={'/Product/' + i._id} className="catalog__button__wrapper"></NavLink>
+                                    <button className='catalog__button' onClick={ () => addToCart(i)}>Add To Cart</button>
+                                </div>
+                                <div className="catalog__item__textbox">
+                                    <h2 className='catalog__item-title'>{i.title}</h2>
+                                    <p className='catalog__item-description'>{i.description}</p>
+                                    <p className='catalog__item-price'>${i.price}</p>
+                                </div>
+                            </div>
+                        })
+                        :
+                        filterGoodList.map((i) => {
+                            return <div className="catalog__item">
+                                <div className="test">
+                                    <img className='catalog__item-photo' src={photoUrl + i.photo} alt="" width='360' height='420'/>
+                                    <NavLink to={'/Product/' + i._id} className="catalog__button__wrapper"></NavLink>
+                                    <button className='catalog__button' onClick={ () => addToCart(i)}>Add To Cart</button>
+                                </div>
+                                <div className="catalog__item__textbox">
+                                    <h2 className='catalog__item-title'>{i.title}</h2>
+                                    <p className='catalog__item-description'>{i.description}</p>
+                                    <p className='catalog__item-price'>${i.price}</p>
+                                </div>
+                            </div>
+                        })
+                    }
 
                 </div>
             </div>
         </div>
     );
 };
+
+React.memo(Catalog)
 
 export default Catalog;

@@ -6,11 +6,6 @@ export const registerValidation = [
     body('password', 'password incorrect').isLength({min: 5}),
 ]
 
-export const loginValidation = [
-    body('email', 'email incorrect').isEmail(),
-    body('password', 'password incorrect').isLength({min: 5}),
-]
-
 export const goodsCreateValidation = [
     body('title', '').isString(),
     body('description', '').isString(),

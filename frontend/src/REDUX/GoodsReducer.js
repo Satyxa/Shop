@@ -20,10 +20,8 @@ const GoodsSlice = createSlice({
     initialState,
     reducers:{
         setGoods: (state, action) => {
-            state.goodsList = {...action.payload}
-
-
-        }
+            state.goodsList = [...action.payload]
+        },
     }
 
 })
