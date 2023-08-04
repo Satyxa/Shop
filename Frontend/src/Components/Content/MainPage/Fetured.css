@@ -1,0 +1,144 @@
+.container {
+    width: 1200px;
+}
+
+.section__title {
+    margin: 0 auto;
+    font-family: Lato, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #222222;
+    margin-bottom: 6px;
+}
+
+.section__subtitle {
+    margin: 0 auto;
+    font-family: Lato, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #9F9F9F;
+    margin-bottom: 48px;
+}
+
+.card__box {
+    display: grid;
+    grid-template-columns: 360px 360px 360px;
+    grid-template-rows: 581px;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    margin: 0 35px;
+    margin-bottom: 48px;
+}
+
+.card {
+    background-color: rgba(58, 56, 56, 0.86);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.card__img__test {
+    position: relative;
+}
+
+.card__img {
+    position: relative;
+}
+.privet {
+    background-color: black;
+}
+.card__img:hover .card__hover__button {
+    visibility: visible;
+}
+.card__img:hover .privet {
+    opacity: 0.1;
+    width: 360px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__hover__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    visibility: hidden;
+    width: 138px;
+    height: 43px;
+    display: block;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-family: Lato, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 1;
+    line-height: 17px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.text-box {
+    padding: 0 28px 0 16px;
+    background-color: #F8F8F8;
+    height: 100%;
+}
+
+
+.card__title {
+    text-transform: uppercase;
+    font-family: Lato, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    margin-bottom: 12px;
+    color: black;
+    letter-spacing: 1px;
+    margin-top: 24px;
+}
+
+.card__description {
+    font-family: Lato, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 17px;
+    text-align: left;
+    color: #5D5D5D;
+    margin-bottom: 18px;
+    max-height: 52px;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.card__price {
+    font-family: Lato, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: left;
+    color: #F16D7F;
+    margin-bottom: 20px;
+}
+
+.showMore {
+    width: 211px;
+    height: 47px;
+    background-color: white;
+    border: 1px solid #FF6A6A;
+    color: #FF6A6A;
+    font-family: Lato, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    cursor: pointer;
+    margin-bottom: 95px;
+}
+
+
