@@ -4,6 +4,10 @@
     width: 100%;
     margin-bottom: 63px;
 }
+.brand__field1111 {
+    height: 75px;
+    background-color: white;
+}
 
 .brand__field__title {
     flex-grow: 1;
